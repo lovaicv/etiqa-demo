@@ -1,18 +1,20 @@
-# etiqa_demo
+how to build and run using Android Studio
 
-A new Flutter project.
+Clone using Android Studio
+connect iPhone or Android phone
+flutter run > to run app
+flutter test > to run unit and widget tests
 
-## Getting Started
+✅ Continuous Integration using GitHub workflows
+✅ Unit Test 
 
-This project is a starting point for a Flutter application.
+Create an application following the above screen design.
+✅ User can add or edit one of the TODO item.
+✅ When user taps add button , navigate to page 2.
+✅ When user fills up and saved, app navigate back to the page 1 listing.
+✅ When user taps an item, navigate to page 2 with its detail.
+✅ User can save the changes, see the changes on page 1 listing.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-# etiqa-demo
+Deployed to both GitHub and Heroku
+Github https://lovaicv.github.io/
+Heroku https://etiqa-demo-93a39e04f200.herokuapp.com/
