@@ -9,7 +9,9 @@ class NewEditPageController extends GetxController {
   NewEditPageController({required this.hive});
 
   final HiveInterface hive;
+  ScrollController scrollController = ScrollController();
   TextEditingController titleController = TextEditingController();
+  FocusNode focusNode = FocusNode();
   int todoKey = -1;
   String title = '';
   RxBool isTitleEmpty = false.obs;
@@ -20,7 +22,15 @@ class NewEditPageController extends GetxController {
   bool isCreate = false;
 
   @override
+  onClose() {
+    scrollController.dispose();
+  }
+
+  @override
   void onInit() {
+    scrollController.addListener(() {
+      focusNode.unfocus();
+    });
     isCreate = Get.arguments['isCreate'];
     todoKey = Get.arguments['todoKey'] ?? -1;
     if (isCreate) {
@@ -65,13 +75,11 @@ class NewEditPageController extends GetxController {
   /// Sets the start [date] of the todoItem.
   void setStartDate(DateTime date) {
     startDate.value = date;
-    // isStartDateError.value = date.isEmpty ? 'Please select start date1' : '';
   }
 
   /// Sets the end [date] of the todoItem.
   void setEndDate(DateTime date) {
     endDate.value = date;
-    // isEndDateError.value = date.isEmpty ? 'Please select end date1' : '';
   }
 
   /// Creates or updates the todoItem.
@@ -80,16 +88,6 @@ class NewEditPageController extends GetxController {
       isTitleEmpty.value = true;
       return;
     }
-    // if (startDate.isEmpty) {
-    //   isStartDateError.value = 'Please select start date2';
-    // }
-    // if (endDate.isEmpty) {
-    //   isEndDateError.value = 'Please select end date2';
-    // }
-    // if (title.isEmpty || startDate.isEmpty || endDate.isEmpty) {
-    //   return;
-    // }
-
     if (startDate.value.isAfter(endDate.value)) {
       isEndDateError.value = AppString.endDateError.tr;
       return;

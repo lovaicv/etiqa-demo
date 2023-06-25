@@ -26,6 +26,7 @@ class NewEditPage extends GetView<NewEditPageController> {
             height: double.infinity,
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: SingleChildScrollView(
+              controller: controller.scrollController,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -36,6 +37,7 @@ class NewEditPage extends GetView<NewEditPageController> {
                     decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextField(
+                      focusNode: controller.focusNode,
                       keyboardType: TextInputType.multiline,
                       maxLines: 5,
                       controller: controller.titleController,
@@ -50,58 +52,58 @@ class NewEditPage extends GetView<NewEditPageController> {
                   ),
                   const SizedBox(height: 5),
                   Obx(() => Visibility(
-                        visible: controller.isTitleEmpty.value,
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            AppString.enterSomeText.tr,
-                            style: TextStyle(color: Colors.red[800]),
-                          ),
-                        ),
-                      )),
+                    visible: controller.isTitleEmpty.value,
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        AppString.enterSomeText.tr,
+                        style: TextStyle(color: Colors.red[800]),
+                      ),
+                    ),
+                  )),
                   const SizedBox(height: 20),
                   Text(AppString.startDate.tr),
                   const SizedBox(height: 10),
                   InkWell(
                     onTap: GetPlatform.isAndroid || GetPlatform.isWeb
                         ? () async {
-                            DateTime? value = await showDatePicker(
-                                context: context,
-                                initialDate: controller.startDate.value,
-                                firstDate: DateTime.now().subtract(const Duration(days: 365)),
-                                lastDate: DateTime.now().add(const Duration(days: 365)));
-                            if (value != null) {
-                              controller.setStartDate(DateTime(
-                                value.year,
-                                value.month,
-                                value.day,
-                                0,
-                                0,
-                                0,
-                              ));
-                            }
-                          }
+                      DateTime? value = await showDatePicker(
+                          context: context,
+                          initialDate: controller.startDate.value,
+                          firstDate: DateTime.now().subtract(const Duration(days: 365)),
+                          lastDate: DateTime.now().add(const Duration(days: 365)));
+                      if (value != null) {
+                        controller.setStartDate(DateTime(
+                          value.year,
+                          value.month,
+                          value.day,
+                          0,
+                          0,
+                          0,
+                        ));
+                      }
+                    }
                         : () {
-                            DateTime now = DateTime.now();
-                            DateTime minDate = DateTime(now.year - 1);
-                            DateTime maxDate = DateTime(now.year + 1);
-                            _showDialog(CupertinoDatePicker(
-                              mode: CupertinoDatePickerMode.date,
-                              initialDateTime: controller.startDate.value,
-                              minimumDate: minDate,
-                              maximumDate: maxDate,
-                              onDateTimeChanged: (DateTime value) {
-                                controller.setStartDate(DateTime(
-                                  value.year,
-                                  value.month,
-                                  value.day,
-                                  0,
-                                  0,
-                                  0,
-                                ));
-                              },
-                            ));
-                          },
+                      DateTime now = DateTime.now();
+                      DateTime minDate = DateTime(now.year - 1);
+                      DateTime maxDate = DateTime(now.year + 1);
+                      _showDialog(CupertinoDatePicker(
+                        mode: CupertinoDatePickerMode.date,
+                        initialDateTime: controller.startDate.value,
+                        minimumDate: minDate,
+                        maximumDate: maxDate,
+                        onDateTimeChanged: (DateTime value) {
+                          controller.setStartDate(DateTime(
+                            value.year,
+                            value.month,
+                            value.day,
+                            0,
+                            0,
+                            0,
+                          ));
+                        },
+                      ));
+                    },
                     child: Container(
                       decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
                       padding: const EdgeInsets.all(10),
@@ -109,10 +111,8 @@ class NewEditPage extends GetView<NewEditPageController> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Obx(() => Text(
-                                myDateFormat().format(controller.startDate.value),
-                                style: const TextStyle(
-                                    color: /*controller.startDate.value == 'Select a Date' ? Colors.grey :*/
-                                        Colors.black),
+                            myDateFormat().format(controller.startDate.value),
+                                style: const TextStyle(color: Colors.black),
                               )),
                           const Icon(
                             Icons.arrow_drop_down,
@@ -124,58 +124,58 @@ class NewEditPage extends GetView<NewEditPageController> {
                   ),
                   const SizedBox(height: 5),
                   Obx(() => Visibility(
-                        visible: controller.isStartDateError.isNotEmpty,
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            controller.isStartDateError.value,
-                            style: TextStyle(color: Colors.red[800]),
-                          ),
-                        ),
-                      )),
+                    visible: controller.isStartDateError.isNotEmpty,
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        controller.isStartDateError.value,
+                        style: TextStyle(color: Colors.red[800]),
+                      ),
+                    ),
+                  )),
                   const SizedBox(height: 20),
                   Text(AppString.estimatedEndDate.tr),
                   const SizedBox(height: 10),
                   InkWell(
                     onTap: GetPlatform.isAndroid || GetPlatform.isWeb
                         ? () async {
-                            DateTime? value = await showDatePicker(
-                                context: context,
-                                initialDate: controller.endDate.value,
-                                firstDate: DateTime.now().subtract(const Duration(days: 365)),
-                                lastDate: DateTime.now().add(const Duration(days: 365)));
-                            if (value != null) {
-                              controller.setEndDate(DateTime(
-                                value.year,
-                                value.month,
-                                value.day,
-                                0,
-                                0,
-                                0,
-                              ));
-                            }
-                          }
+                      DateTime? value = await showDatePicker(
+                          context: context,
+                          initialDate: controller.endDate.value,
+                          firstDate: DateTime.now().subtract(const Duration(days: 365)),
+                          lastDate: DateTime.now().add(const Duration(days: 365)));
+                      if (value != null) {
+                        controller.setEndDate(DateTime(
+                          value.year,
+                          value.month,
+                          value.day,
+                          0,
+                          0,
+                          0,
+                        ));
+                      }
+                    }
                         : () {
-                            DateTime now = DateTime.now();
-                            DateTime minDate = DateTime(now.year - 1);
-                            DateTime maxDate = DateTime(now.year + 1);
-                            _showDialog(CupertinoDatePicker(
-                              mode: CupertinoDatePickerMode.date,
-                              initialDateTime: controller.endDate.value,
-                              minimumDate: minDate,
-                              maximumDate: maxDate,
-                              onDateTimeChanged: (DateTime value) {
-                                controller.setEndDate(DateTime(
-                                  value.year,
-                                  value.month,
-                                  value.day,
-                                  23,
-                                  59,
-                                  59,
-                                ));
-                              },
-                            ));
-                          },
+                      DateTime now = DateTime.now();
+                      DateTime minDate = DateTime(now.year - 1);
+                      DateTime maxDate = DateTime(now.year + 1);
+                      _showDialog(CupertinoDatePicker(
+                        mode: CupertinoDatePickerMode.date,
+                        initialDateTime: controller.endDate.value,
+                        minimumDate: minDate,
+                        maximumDate: maxDate,
+                        onDateTimeChanged: (DateTime value) {
+                          controller.setEndDate(DateTime(
+                            value.year,
+                            value.month,
+                            value.day,
+                            23,
+                            59,
+                            59,
+                          ));
+                        },
+                      ));
+                    },
                     child: Container(
                       decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
                       padding: const EdgeInsets.all(10),
@@ -183,11 +183,11 @@ class NewEditPage extends GetView<NewEditPageController> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Obx(() => Text(
-                                myDateFormat().format(controller.endDate.value),
-                                style: const TextStyle(
-                                    color: /*controller.endDate.value == 'Select a Date' ? Colors.grey :*/
-                                        Colors.black),
-                              )),
+                            myDateFormat().format(controller.endDate.value),
+                            style: const TextStyle(
+                                color: /*controller.endDate.value == 'Select a Date' ? Colors.grey :*/
+                                Colors.black),
+                          )),
                           const Icon(
                             Icons.arrow_drop_down,
                             color: Colors.grey,
@@ -198,15 +198,15 @@ class NewEditPage extends GetView<NewEditPageController> {
                   ),
                   const SizedBox(height: 5),
                   Obx(() => Visibility(
-                        visible: controller.isEndDateError.isNotEmpty,
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            controller.isEndDateError.value,
-                            style: TextStyle(color: Colors.red[800]),
-                          ),
-                        ),
-                      )),
+                    visible: controller.isEndDateError.isNotEmpty,
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        controller.isEndDateError.value,
+                        style: TextStyle(color: Colors.red[800]),
+                      ),
+                    ),
+                  )),
                 ],
               ),
             ),
@@ -241,14 +241,10 @@ class NewEditPage extends GetView<NewEditPageController> {
       builder: (BuildContext context) => Container(
         height: 216,
         padding: const EdgeInsets.only(top: 6.0),
-        // The Bottom margin is provided to align the popup above the system
-        // navigation bar.
         margin: EdgeInsets.only(
           bottom: MediaQuery.of(context).viewInsets.bottom,
         ),
-        // Provide a background color for the popup.
         color: CupertinoColors.systemBackground.resolveFrom(context),
-        // Use a SafeArea widget to avoid system overlaps.
         child: SafeArea(
           top: false,
           child: child,

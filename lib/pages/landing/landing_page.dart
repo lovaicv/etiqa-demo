@@ -29,12 +29,6 @@ class LandingPage extends GetView<LandingPageController> {
                     isExpanded: true,
                     value: controller.sortBy.value,
                     icon: Container(alignment: Alignment.centerRight, child: const Icon(Icons.arrow_drop_down)),
-                    // elevation: 16,
-                    // style: const TextStyle(color: Colors.deepPurple),
-                    // underline: Container(
-                    //   height: 2,
-                    //   color: Colors.deepPurpleAccent,
-                    // ),
                     onChanged: (String? value) {
                       controller.setSortBy(value);
                     },
@@ -51,12 +45,6 @@ class LandingPage extends GetView<LandingPageController> {
                     isExpanded: true,
                     value: controller.orderBy.value,
                     icon: Container(alignment: Alignment.centerRight, child: const Icon(Icons.arrow_drop_down)),
-                    // elevation: 16,
-                    // style: const TextStyle(color: Colors.deepPurple),
-                    // underline: Container(
-                    //   height: 2,
-                    //   color: Colors.deepPurpleAccent,
-                    // ),
                     onChanged: (String? value) {
                       controller.setOrderBy(value);
                     },
@@ -130,196 +118,6 @@ class LandingPage extends GetView<LandingPageController> {
         ],
       ),
       body:
-          // ValueListenableBuilder(
-          //   key:controller.key,
-          //     valueListenable: Hive.box(todoDB).listenable(),
-          //     builder: (context, Box<dynamic> box, widget) {
-          //       List<Todo> todoList = box.values.map((items) => items as Todo).toList();
-          //
-          //       bool ascending = controller.orderBy.value == 'Ascending';
-          //       bool descending = controller.orderBy.value == 'Descending';
-          //
-          //       todoList.forEach((todo) {
-          //         Duration duration = myDateFormat().parse(todo.endDate).difference(DateTime.now());
-          //         todo.timeLeft = duration.inMilliseconds;
-          //       });
-          //
-          //       switch (controller.sortBy.value) {
-          //         case 'Default':
-          //           todoList.sort((a, b) => ascending ? a.key.compareTo(b.key) : b.key.compareTo(a.key));
-          //           break;
-          //         case 'Title':
-          //           todoList.sort((a, b) => ascending ? a.title.compareTo(b.title) : b.title.compareTo(a.title));
-          //           break;
-          //         case 'Start Date':
-          //           todoList.sort((a, b) => ascending ? a.startDate.compareTo(b.startDate) : b.startDate.compareTo(a.startDate));
-          //           break;
-          //         case 'End Date':
-          //           todoList.sort((a, b) => ascending ? a.endDate.compareTo(b.endDate) : b.endDate.compareTo(a.endDate));
-          //           break;
-          //         case 'Time Left':
-          //           todoList.sort((a, b) => ascending ? a.timeLeft.compareTo(b.timeLeft) : b.timeLeft.compareTo(a.timeLeft));
-          //           break;
-          //         case 'Status':
-          //           todoList.sort((a, b) => ascending ? (a.isComplete ? 1 : -1) : (b.isComplete ? 1 : -1));
-          //           break;
-          //       }
-          //
-          //       return Stack(
-          //         children: [
-          //           ListView.separated(
-          //               padding: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 100),
-          //               itemBuilder: (BuildContext context, int index) {
-          //                 Todo todo = todoList[index];
-          //                 Duration duration = myDateFormat().parse(todo.endDate).difference(DateTime.now());
-          //                 bool expired = myDateFormat().parse(todo.endDate).isBefore(DateTime.now());
-          //                 return Slidable(
-          //                   key: const ValueKey(0),
-          //                   endActionPane: ActionPane(
-          //                     motion: const ScrollMotion(),
-          //                     // dismissible: DismissiblePane(onDismissed: () {}),
-          //                     children: [
-          //                       SlidableAction(
-          //                         onPressed: (BuildContext context) {
-          //                           controller.deleteItem(todo.key);
-          //                         },
-          //                         backgroundColor: const Color(0xFFFE4A49),
-          //                         foregroundColor: Colors.white,
-          //                         icon: Icons.delete,
-          //                         label: 'Delete',
-          //                       ),
-          //                     ],
-          //                   ),
-          //                   child: InkWell(
-          //                     onTap: () async {
-          //                       dynamic result = await Get.toNamed(Routes.edit, arguments: {
-          //                         'isCreate': false,
-          //                         'todoKey': todo.key,
-          //                       });
-          //                       // if (result is bool && result) {
-          //                       //   controller.getTodoList();
-          //                       // }
-          //                     },
-          //                     child: Container(
-          //                         decoration: BoxDecoration(
-          //                           color: Colors.white,
-          //                           borderRadius: const BorderRadius.all(Radius.circular(8)),
-          //                           boxShadow: <BoxShadow>[BoxShadow(color: Colors.black.withOpacity(0.16), blurRadius: 8)],
-          //                         ),
-          //                         child: Column(
-          //                           crossAxisAlignment: CrossAxisAlignment.stretch,
-          //                           children: [
-          //                             const SizedBox(height: 20),
-          //                             Container(
-          //                                 padding: const EdgeInsets.symmetric(horizontal: 15),
-          //                                 child: Text(
-          //                                   todo.title,
-          //                                   style: const TextStyle(fontWeight: FontWeight.bold),
-          //                                 )),
-          //                             const SizedBox(height: 20),
-          //                             Container(
-          //                               padding: const EdgeInsets.symmetric(horizontal: 15),
-          //                               child: IntrinsicHeight(
-          //                                 child: Row(
-          //                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //                                   children: [
-          //                                     Flexible(
-          //                                       child: Column(
-          //                                         crossAxisAlignment: CrossAxisAlignment.start,
-          //                                         children: [
-          //                                           const Text('Start Date'),
-          //                                           const SizedBox(height: 5),
-          //                                           Text(
-          //                                             todo.startDate,
-          //                                             style: const TextStyle(fontWeight: FontWeight.bold),
-          //                                           ),
-          //                                         ],
-          //                                       ),
-          //                                     ),
-          //                                     Flexible(
-          //                                       child: Column(
-          //                                         crossAxisAlignment: CrossAxisAlignment.start,
-          //                                         children: [
-          //                                           const Text('End Date'),
-          //                                           const SizedBox(height: 5),
-          //                                           Text(
-          //                                             todo.endDate,
-          //                                             style: const TextStyle(fontWeight: FontWeight.bold),
-          //                                           ),
-          //                                         ],
-          //                                       ),
-          //                                     ),
-          //                                     Flexible(
-          //                                       child: Column(
-          //                                         crossAxisAlignment: CrossAxisAlignment.start,
-          //                                         children: [
-          //                                           const Text('Time left'),
-          //                                           const SizedBox(height: 5),
-          //                                           Text(
-          //                                             expired
-          //                                                 ? 'expired'
-          //                                                 : '${duration.inDays} days ${duration.inHours & 24} hrs ${duration.inMinutes % 60} min',
-          //                                             style: TextStyle(color: expired ? Colors.red : Colors.black, fontWeight: FontWeight.bold),
-          //                                           ),
-          //                                         ],
-          //                                       ),
-          //                                     ),
-          //                                   ],
-          //                                 ),
-          //                               ),
-          //                             ),
-          //                             const SizedBox(height: 20),
-          //                             Container(
-          //                                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-          //                                 decoration: const BoxDecoration(
-          //                                   color: Color(0xffe6e3cf),
-          //                                   borderRadius: BorderRadius.only(bottomLeft: Radius.circular(8), bottomRight: Radius.circular(8)),
-          //                                 ),
-          //                                 child: Row(
-          //                                   children: [
-          //                                     const Text('Status '),
-          //                                     Expanded(
-          //                                         child: Text(
-          //                                       todo.isComplete ? 'Completed' : 'Incomplete',
-          //                                       style: TextStyle(
-          //                                         color: todo.isComplete ? Colors.green : Colors.red,
-          //                                         fontWeight: FontWeight.bold,
-          //                                       ),
-          //                                     )),
-          //                                     const Text('Tick if completed'),
-          //                                     const SizedBox(width: 10),
-          //                                     SizedBox(
-          //                                       width: 20,
-          //                                       height: 20,
-          //                                       child: Checkbox(
-          //                                           value: todo.isComplete,
-          //                                           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          //                                           onChanged: (bool? value) {
-          //                                             controller.updateItem(todo.key, !todo.isComplete);
-          //                                           }),
-          //                                     ),
-          //                                   ],
-          //                                 ))
-          //                           ],
-          //                         )),
-          //                   ),
-          //                 );
-          //               },
-          //               separatorBuilder: (BuildContext context, int index) {
-          //                 return const SizedBox(
-          //                   height: 20,
-          //                 );
-          //               },
-          //               itemCount: todoList.length),
-          //           Center(
-          //             child: Visibility(
-          //               visible: todoList.isEmpty,
-          //               child: const Text('no result'),
-          //             ),
-          //           ),
-          //         ],
-          //       );
-          //     }),
           Obx(() => Stack(
                 children: [
                   ListView.separated(
@@ -332,7 +130,6 @@ class LandingPage extends GetView<LandingPageController> {
                           key: const ValueKey(0),
                           endActionPane: ActionPane(
                             motion: const ScrollMotion(),
-                            // dismissible: DismissiblePane(onDismissed: () {}),
                             children: [
                               SlidableAction(
                                 onPressed: (BuildContext context) {
@@ -491,7 +288,7 @@ class LandingPage extends GetView<LandingPageController> {
           }
         },
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

@@ -90,26 +90,5 @@ class LandingPageController extends GetxController {
     } else if (sortBy.value == AppString.status.tr) {
       todoList.sort((a, b) => ascending ? (a.isComplete ? 1 : -1) : (b.isComplete ? 1 : -1));
     }
-
-    // switch (sortBy.value) {
-    //   case 'Default':
-    //     todoList.sort((a, b) => ascending ? a.key.compareTo(b.key) : b.key.compareTo(a.key));
-    //     break;
-    //   case 'Title':
-    //     todoList.sort((a, b) => ascending ? a.title.compareTo(b.title) : b.title.compareTo(a.title));
-    //     break;
-    //   case 'Start Date':
-    //     todoList.sort((a, b) => ascending ? a.startDate.compareTo(b.startDate) : b.startDate.compareTo(a.startDate));
-    //     break;
-    //   case 'End Date':
-    //     todoList.sort((a, b) => ascending ? a.endDate.compareTo(b.endDate) : b.endDate.compareTo(a.endDate));
-    //     break;
-    //   case 'Time Left':
-    //     todoList.sort((a, b) => ascending ? a.timeLeft.compareTo(b.timeLeft) : b.timeLeft.compareTo(a.timeLeft));
-    //     break;
-    //   case 'Status':
-    //     todoList.sort((a, b) => ascending ? (a.isComplete ? 1 : -1) : (b.isComplete ? 1 : -1));
-    //     break;
-    // }
   }
 }
