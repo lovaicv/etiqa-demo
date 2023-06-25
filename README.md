@@ -16,6 +16,7 @@ Create an application following the above screen design.
 3. ✅ When user fills up and saved, app navigate back to the page 1 listing.
 4. ✅ When user taps an item, navigate to page 2 with its detail.
 5. ✅ User can save the changes, see the changes on page 1 listing.
+6. Added sorting and swipe to delete in the landing page
 
 Deployed to both GitHub and Heroku
 1. Github https://lovaicv.github.io/
