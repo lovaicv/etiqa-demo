@@ -1,9 +1,10 @@
-how to build and run using Android Studio
+# etiqa-demo
 
-Clone using Android Studio
-connect iPhone or Android phone
-flutter run > to run app
-flutter test > to run unit and widget tests
+how to build and run using Android Studio
+1. Clone using Android Studio
+2. connect iPhone or Android phone
+3. flutter run > to run app
+4. flutter test > to run unit and widget tests
 
 ✅ Continuous Integration using GitHub workflows
 ✅ Unit Test 
