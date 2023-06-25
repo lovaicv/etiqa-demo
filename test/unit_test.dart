@@ -17,12 +17,10 @@ void main() {
   late LandingPageController landingPageController;
   late NewEditPageController newEditPageController;
   late MockHiveInterface mockHiveInterface;
-  late MockTodoBox mockTodoBox;
   late MockBox mockBox;
 
   setUp(() {
     mockHiveInterface = MockHiveInterface();
-    mockTodoBox = MockTodoBox();
     mockBox = MockBox();
     splashPageController = SplashPageController();
     landingPageController = LandingPageController(hive: mockHiveInterface);
