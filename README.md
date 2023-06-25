@@ -20,3 +20,5 @@ Create an application following the above screen design.
 Deployed to both GitHub and Heroku
 1. Github https://lovaicv.github.io/
 2. Heroku https://etiqa-demo-93a39e04f200.herokuapp.com/
+
+<img src="images/landing.png" width=20% height=20%><img src="images/sort.png" width=20% height=20%><img src="images/new-edit.png" width=20% height=20%>
