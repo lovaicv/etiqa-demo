@@ -18,6 +18,14 @@ Create an application following the above screen design.
 5. ✅ User can save the changes, see the changes on page 1 listing.
 6. Added sorting and swipe to delete in the landing page
 
+Following attributes would be considered:
+1. Application architecture
+   - code is separated in different directory, MVC model is used.
+3. Code qualities
+   - standard flutter linter rule applied.
+5. Comments, Grammar, and Writings
+   - documentation is added on class and method.
+
 Deployed to both GitHub and Heroku
 1. Github https://lovaicv.github.io/
 2. Heroku https://etiqa-demo-93a39e04f200.herokuapp.com/
