@@ -21,13 +21,14 @@ Create an application following the above screen design.
 Following attributes would be considered:
 1. Application architecture
    - code is separated in different directory, MVC model is used.
-3. Code qualities
+2. Code qualities
    - standard flutter linter rule applied.
-5. Comments, Grammar, and Writings
+3. Comments, Grammar, and Writings
    - documentation is added on class and method.
 
 Deployed to both GitHub and Heroku
+
 1. Github https://lovaicv.github.io/
-2. Heroku https://etiqa-demo-93a39e04f200.herokuapp.com/
+2. ✅ Heroku https://etiqa-demo-93a39e04f200.herokuapp.com/
 
 <img src="images/landing.png" width=20% height=20%><img src="images/sort.png" width=20% height=20%><img src="images/new-edit.png" width=20% height=20%>

@@ -5,7 +5,7 @@ import 'package:etiqa_demo/core/app_string.dart';
 /// ignore rule for lowerCamelCase
 /// translation string for language en_US
 const Map<String, String> en_US = {
-  AppString.appName: "Etiqa",
+  AppString.appName: "Etiqa Demo",
   AppString.endDateError: "End date cannot earlier than start date",
   AppString.addNewItem: "Add new To-Do Item",
   AppString.update: "Update",

@@ -1,4 +1,3 @@
-import 'package:etiqa_demo/core/app_string.dart';
 import 'package:etiqa_demo/core/routes.dart';
 import 'package:etiqa_demo/lang/translation_service.dart';
 import 'package:etiqa_demo/pages/landing/landing_page.dart';
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
       locale: TranslationService.locale,
       fallbackLocale: TranslationService.fallbackLocale,
       translations: TranslationService(),
-      title: AppString.appName.tr,
+      title: 'Etiqa Demo',
       debugShowCheckedModeBanner: false,
       defaultTransition: GetPlatform.isIOS ? Get.defaultTransition : Transition.cupertino,
       initialRoute: Routes.splash,
