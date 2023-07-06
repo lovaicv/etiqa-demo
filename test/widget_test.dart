@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:etiqa_demo/main.dart';
-import 'package:etiqa_demo/pages/landing/landing_page.dart';
-import 'package:etiqa_demo/pages/landing/landing_page_controller.dart';
+import 'package:etiqa_demo/pages/landing_new_edit/landing_page.dart';
+import 'package:etiqa_demo/pages/landing_new_edit/landing_page_controller.dart';
 import 'package:etiqa_demo/pages/new_edit/new_edit_page.dart';
 import 'package:etiqa_demo/pages/new_edit/new_edit_page_controller.dart';
 import 'package:etiqa_demo/pages/splash/splash_page.dart';
@@ -40,6 +40,7 @@ void main() {
 
     when(mockHiveInterface.openBox(any)).thenAnswer((_) async => mockBox);
     when(mockBox.values).thenReturn(<dynamic>[]);
+    tester.view.physicalSize = const Size(800, 600); // set as phone screen size
 
     Get.put(LandingPageController(hive: mockHiveInterface));
 

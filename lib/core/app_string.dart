@@ -4,6 +4,7 @@ class AppString {
   static const endDateError = 'endDateError';
   static const addNewItem = 'addNewItem';
   static const update = 'update';
+  static const createUpdate = 'createUpdate';
   static const todoTitle = 'todoTitle';
   static const todoTitleHint = 'todoTitleHint';
   static const enterSomeText = 'enterSomeText';

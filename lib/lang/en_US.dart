@@ -8,6 +8,7 @@ const Map<String, String> en_US = {
   AppString.appName: "Etiqa Demo",
   AppString.endDateError: "End date cannot earlier than start date",
   AppString.addNewItem: "Add new To-Do Item",
+  AppString.createUpdate: "Create or Update To-Do Item",
   AppString.update: "Update",
   AppString.todoTitle: "To Do Title",
   AppString.todoTitleHint: "Please key in your To Do title here",

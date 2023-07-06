@@ -19,7 +19,7 @@ class NewEditPageController extends GetxController {
   Rx<DateTime> endDate = DateTime.now().obs;
   RxString isStartDateError = ''.obs;
   RxString isEndDateError = ''.obs;
-  bool isCreate = false;
+  bool isCreate = true;
 
   @override
   onClose() {
@@ -31,28 +31,30 @@ class NewEditPageController extends GetxController {
     scrollController.addListener(() {
       focusNode.unfocus();
     });
-    isCreate = Get.arguments['isCreate'];
-    todoKey = Get.arguments['todoKey'] ?? -1;
-    if (isCreate) {
-      DateTime now = DateTime.now();
-      startDate.value = DateTime(
-        now.year,
-        now.month,
-        now.day,
-        0,
-        0,
-        0,
-      );
-      endDate.value = DateTime(
-        now.year,
-        now.month,
-        now.day,
-        23,
-        59,
-        59,
-      );
-    } else {
-      setupItem(todoKey);
+    if (Get.arguments != null) {
+      isCreate = Get.arguments['isCreate'];
+      todoKey = Get.arguments['todoKey'] ?? -1;
+      if (isCreate) {
+        DateTime now = DateTime.now();
+        startDate.value = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          0,
+          0,
+          0,
+        );
+        endDate.value = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          23,
+          59,
+          59,
+        );
+      } else {
+        setupItem(todoKey);
+      }
     }
     super.onInit();
   }
@@ -61,6 +63,7 @@ class NewEditPageController extends GetxController {
   setupItem(int todoKey) async {
     TodoBox box = TodoBox(hive: hive);
     TodoItem todoItem = await box.getItem(todoKey);
+    setTitle(todoItem.title);
     titleController.text = todoItem.title;
     startDate.value = todoItem.startDate;
     endDate.value = todoItem.endDate;
