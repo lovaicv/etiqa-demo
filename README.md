@@ -1,6 +1,6 @@
 # etiqa-demo
 
-how to build and run using Android Studio
+How to build and run using Android Studio
 1. Clone using Android Studio
 2. connect iPhone or Android phone
 3. flutter run > to run app
